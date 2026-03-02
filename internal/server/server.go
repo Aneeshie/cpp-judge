@@ -15,7 +15,5 @@ func NewServer(conn *pgx.Conn) *gin.Engine {
 
 	r.POST("/problems", problemHandler.CreateProblem)
 
-	r.GET("/health", GetHealth)
-
 	return r
 }
