@@ -2,6 +2,7 @@ package problem
 
 import (
 	"context"
+	"errors"
 
 	"github.com/jackc/pgx/v5"
 )
@@ -57,7 +58,10 @@ func (r *Repository) GetProblems(ctx context.Context) ([]Problem, error) {
 
 	rows, err := r.db.Query(ctx, query)
 	if err != nil {
-		return nil, err
+		if errors.Is(pgx.ErrNoRows, err) {
+			return []Problem{}, err
+		}
+		return []Problem{}, err
 	}
 
 	defer rows.Close()
