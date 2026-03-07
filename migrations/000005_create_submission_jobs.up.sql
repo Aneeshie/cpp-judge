@@ -3,7 +3,7 @@ CREATE TYPE job_status AS ENUM (
     'PROCESSING',
     'COMPLETED',
     'FAILED'
-)
+);
 
 CREATE TABLE submission_jobs (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -18,4 +18,4 @@ CREATE TABLE submission_jobs (
         FOREIGN KEY (submission_id)
         REFERENCES submissions(id)
         ON DELETE CASCADE
-)
+);
