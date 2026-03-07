@@ -9,7 +9,7 @@ CREATE TYPE submission_verdict AS ENUM (
 );
 
 CREATE TABLE submissions (
-    id UUID PRIMARY KEY gen_random_uuid(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
     user_id UUID NOT NULL,
     problem_id UUID NOT NULL,
@@ -33,4 +33,4 @@ CREATE TABLE submissions (
         FOREIGN KEY (problem_id)
         REFERENCES problems(id)
         ON DELETE CASCADE
-)
+);
